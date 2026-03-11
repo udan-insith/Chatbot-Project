@@ -16,23 +16,33 @@
       function ChatInput() {
         return (
           <>
-            <input />
+            <input placeholder="Send a message to Chatbot" size="30" />
             <button>Send</button>
           </>
         ); // fragments
       }
 
+      function ChatMessage() {
+        return (
+          <div>
+            hello chatbot
+            <img src="user.png" width="50" />
+          </div>
+        );
+      } // props
+
         const button = <button>hello</button>;
         const paragraph = <p>paragraph of text</p>;
-        const div = (
+        const app = (
             <>
-                <ChatInput />  
+                <ChatInput /> 
+                <ChatMessage message="hello chatbot" />
             </>
         ); // components syntax
 
       const container = document.querySelector('.js-container');
 
-      ReactDOM.createRoot(container).render(div);
+      ReactDOM.createRoot(container).render(app);
     </script>
   </body>
 </html>
