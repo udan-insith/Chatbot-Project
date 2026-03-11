@@ -13,15 +13,22 @@
 
     <script type="text/babel">
 
+      function ChatInput() {
+        return (
+          <>
+            <input />
+            <button>Send</button>
+          </>
+        ); // fragments
+      }
+
         const button = <button>hello</button>;
         const paragraph = <p>paragraph of text</p>;
         const div = (
-            <div>
-                <button>Click Me</button>
-                <p>Age : {2 + 2}</p>
-            </div>
-        );
-       
+            <>
+                <ChatInput />  
+            </>
+        ); // components syntax
 
       const container = document.querySelector('.js-container');
 
