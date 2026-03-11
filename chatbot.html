@@ -18,7 +18,8 @@
           <>
             <input
               placeholder="Send a message to Chatbot"
-              size="30" 
+              size="30"
+              onChange={} 
             />
             <button>Send</button>
           </>
@@ -57,8 +58,9 @@
         );
       } // props, // shortcut
 
+      // converts data into state
       function ChatMessages() {
-        const array =  React.useState([{
+        const {chatMessages , setChatMessages} =  React.useState([{
           message: 'hello chatbot',
           sender: 'user',
           if: 'id1'
@@ -75,13 +77,19 @@
           sender: 'robot',
           id: 'id4'
         }]);
-        const chatMessage = array[0];       // current value of chatMessages
-        const setChatMessages = array[1];    //let us update the data
+        // const {chatMessages , setChatMessages} = array; // shortcut - array destructuring
+        // const chatMessages = array[0];       // current data
+        // const setChatMessages = array[1];    //let us update the data
         
         // event handlers , spread operator(...chatMessages)
         function sendMessage() {
           setChatMessages([
-            ...chatMessages
+            ...chatMessages,
+            {
+              message: 'test',
+              sender: 'user',
+              id: crypto.randomUUID()
+            }
           ])
         }
 
