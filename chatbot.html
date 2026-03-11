@@ -58,7 +58,7 @@
       } // props, // shortcut
 
       function ChatMessages() {
-        const chatMessages = [{
+        const array =  React.useState([{
           message: 'hello chatbot',
           sender: 'user',
           if: 'id1'
@@ -74,17 +74,15 @@
           message: 'Today is September 27',
           sender: 'robot',
           id: 'id4'
-        }];
-
-
+        }]);
+        const chatMessage = array[0];       // current value of chatMessages
+        const setChatMessages = array[1];    //let us update the data
+        
+        // event handlers , spread operator(...chatMessages)
         function sendMessage() {
-          chatMessages.push({
-            message: 'test',
-            sender: 'user',
-            id: crypto.randomUUID()
-          })
-
-          console.log(chatMessages)
+          setChatMessages([
+            ...chatMessages
+          ])
         }
 
         return (
