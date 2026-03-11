@@ -49,6 +49,7 @@
             )}
 
             {message}
+
             { sender === 'user' && (
               <img src="user.png" width="50" />
             )}
@@ -56,27 +57,63 @@
         );
       } // props, // shortcut
 
-        function App() {
-          return (
-            <>
-                <ChatInput /> 
-                <ChatMessage 
-                  message="hello chatbot" sender="user" 
-                />
-                <ChatMessage 
-                  message="Hello! How can I help you?" 
-                  sender="robot" 
-                />
-                <ChatMessage 
-                  message="can you get me todays date?" 
-                  sender="user" 
-                />
-                <ChatMessage 
-                  message="Today is September 27" sender="robot" 
-                />
-            </>
+      function ChatMessages() {
+        const chatMessages = [{
+          message: 'hello chatbot',
+          sender: 'user',
+          if: 'id1'
+        },{
+          message: 'Hello! How can I help you?',
+          sender: 'robot',
+          id: 'id2'
+        },{
+          message: 'can you get me todays date?',
+          sender: 'user',
+          id: 'id3'
+        },{
+          message: 'Today is September 27',
+          sender: 'robot',
+          id: 'id4'
+        }];
+
+
+        function sendMessage() {
+          chatMessages.push({
+            message: 'test',
+            sender: 'user',
+            id: crypto.randomUUID()
+          })
+
+          console.log(chatMessages)
+        }
+
+        return (
+          <>
+            <button onClick={sendMessage}>Send message</button>
+
+
+            {chatMessages.map((chatMessage) => {
+                    return (
+                      <ChatMessage 
+                        message={chatMessage.message}
+                        sender={chatMessage.sender}
+                        key={chatMessage.id}
+                      />
+                    );
+            })}
+          </>
           );
-        } // components syntax
+      }
+
+
+      function App() {
+        return (
+          <>
+              <ChatInput /> 
+              <ChatMessages />  
+          </>
+        );
+      } // components syntax
 
       const container = document.querySelector('.js-container');
 
